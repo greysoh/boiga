@@ -265,7 +265,16 @@ def serialise_expression(sprite, expression, parent, shadow=False):
 		}
 
 	else:
-		raise Exception(f"Unable to serialise expression {expression!r}")
+		print(f"WARNING: I don't know how to serialise this expression {expression!r}. Doing best-effort guess...")
+		dict_rebuilt = {}
+		
+		for arg_name in expression.args:
+			dict_rebuilt[arg_name] = sprite.serialise_arg(expression.args[arg_name], uid)
+
+		out = {
+			"opcode": expression.op,
+			"fields": dict_rebuilt
+		}
 	
 	blocks_json[uid].update(out)
 	return uid
