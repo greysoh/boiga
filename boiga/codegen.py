@@ -26,7 +26,7 @@ class Project():
 		self.sprites.append(sprite)
 		return sprite
 	
-	def save(self, filename, stealthy=False, execute=False, capture=False):
+	def save(self, filename, stealthy=False, execute=False, capture=False, custom_extensions=[], custom_extension_urls={}):
 		self.asset_data = {}
 		self.used_layers = set() # used during serialisation
 		
@@ -37,7 +37,8 @@ class Project():
 			project = {
 				"targets": [s.serialise(self.used_layers) for s in self.sprites],
 				"monitors": self.monitors,
-				"extensions": ["pen", "music"],
+				"extensions": ["pen", "music"] + custom_extensions,
+				"extensionURLs": custom_extension_urls, # FIXME: implement stealth checks here...
 				"meta": {
 					"semver": "3.0.0",
 					"vm": "0.2.0-prerelease.20210706190652",
