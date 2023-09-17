@@ -403,7 +403,16 @@ def serialise_statement(sprite, statement):
 		}
 	
 	else:
-		raise Exception(f"I don't know how to serialise this op: {statement.op!r}")
+		print(f"WARNING: I don't know how to serialise this op {statement.op!r}. Doing best-effort guess...")
+		dict_rebuilt = {}
+		
+		for arg_name in statement.args:
+			dict_rebuilt[arg_name] = sprite.serialise_arg(statement.args[arg_name], uid)
+
+		out = {
+			"opcode": statement.op,
+			"inputs": dict_rebuilt
+		}
 
 	blocks_json[uid].update(out)
 	return uid
