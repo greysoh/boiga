@@ -399,6 +399,10 @@ class IfStatement(Statement):
 		super().__init__("control_if", CONDITION=ensure_expression(condition), SUBSTACK=then)
 		self.Else = ElseHack(condition, then)
 
+class WhileStatement(Statement):
+	def __init__(self, condition, then):
+		super().__init__("control_while", CONDITION=ensure_expression(condition), SUBSTACK=then)
+
 class IfElseStatement(Statement):
 	def __init__(self, condition, then, elsedo):
 		super().__init__("control_if_else", CONDITION=ensure_expression(condition), SUBSTACK=then, SUBSTACK2=elsedo)

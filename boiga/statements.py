@@ -89,6 +89,14 @@ def serialise_statement(sprite, statement):
 				"SUBSTACK2": sprite.serialise_script(statement.args["SUBSTACK2"], uid)
 			}
 		}
+	elif statement.op == "control_while":
+		out = {
+			"opcode": "control_while",
+			"inputs": {
+				"CONDITION": sprite.serialise_bool(statement.args["CONDITION"], uid),
+				"SUBSTACK": sprite.serialise_script(statement.args["SUBSTACK"], uid)
+			}
+		}
 	elif statement.op == "control_wait":
 		out = {
 			"opcode": "control_wait",

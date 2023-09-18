@@ -131,6 +131,11 @@ def If(condition, then=None):
 		return core.getitem_hack(If, condition)
 	return core.IfStatement(condition, then)
 
+def While(condition, then=None):
+	if then is None:
+		return core.getitem_hack(While, condition)
+	return core.WhileStatement(condition, then)
+
 RepeatUntil = core.repeatuntil
 
 def StopAll():
