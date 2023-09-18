@@ -1,6 +1,6 @@
 # boiga
 
-Boiga is a Python library enabling ergonomic Scratch 3.0 code generation.
+Boiga is a Python library originally developed by [https://github.com/DavidBuchanan314/](DavidBuchanan314) enabling ergonomic Scratch 3.0 code generation.
 
 Have you ever attempted to author advanced or accelerated algorithms in Scratch? It's not much fun - you might end up making miles of mouse movements for even the most miniscule of modifications.
 
@@ -9,6 +9,19 @@ Boiga (ab)uses Python's operator overloading, to write Scratch expressions with 
 See the examples directory for... examples. Further usage examples can be seen in my [Scratch Cryptography Library](https://github.com/DavidBuchanan314/scratch-cryptography-library).
 
 See also: [scratch-vscode](https://github.com/DavidBuchanan314/scratch-vscode) - A vscode extension that lets you preview Scratch projects right in your editor, with live reload.
+
+## Modifications:
+
+This fork has several modifications done to allow more extensive development:
+ - `While` implementation
+ - `WaitUntil` implementation
+ - Ability to define custom extensions, block ASTs
+  - TODO: The method used patches out the errors and instead does a suppressed warning to do the custom extensions.
+
+## Wanted modifications:
+
+Below is some modifications that I would like to implement:
+ - Ability to import and use (potentially with helper code) original Scratch 3 sprite code
 
 ## Project Status:
 
