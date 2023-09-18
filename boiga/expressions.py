@@ -273,7 +273,7 @@ def serialise_expression(sprite, expression, parent, shadow=False):
 
 		out = {
 			"opcode": expression.op,
-			"fields": dict_rebuilt
+			"inputs": dict_rebuilt
 		}
 	
 	blocks_json[uid].update(out)
