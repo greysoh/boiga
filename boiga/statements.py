@@ -1,5 +1,6 @@
 from email.policy import default
 import json
+import os
 
 from . import ast_core
 
@@ -403,7 +404,7 @@ def serialise_statement(sprite, statement):
 		}
 	
 	else:
-		print(f"WARNING: I don't know how to serialise this op {statement.op!r}. Doing best-effort guess...")
+		if "ENFORCE_WARN_SHOW" in os.environ: print(f"WARNING: I don't know how to serialise this op {statement.op!r}. Doing best-effort guess...")
 		dict_rebuilt = {}
 		
 		for arg_name in statement.args:

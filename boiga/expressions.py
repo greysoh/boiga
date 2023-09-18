@@ -1,4 +1,5 @@
 from . import ast
+import os
 
 def serialise_expression(sprite, expression, parent, shadow=False):
 	if not issubclass(type(expression), ast.core.Expression):
@@ -265,7 +266,7 @@ def serialise_expression(sprite, expression, parent, shadow=False):
 		}
 
 	else:
-		print(f"WARNING: I don't know how to serialise this expression {expression!r}. Doing best-effort guess...")
+		if "ENFORCE_WARN_SHOW" in os.environ: print(f"WARNING: I don't know how to serialise this expression {expression!r}. Doing best-effort guess...")
 		dict_rebuilt = {}
 		
 		for arg_name in expression.args:
