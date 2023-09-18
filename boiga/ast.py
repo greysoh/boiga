@@ -113,6 +113,10 @@ class Wait(core.Statement):
 	def __init__(self, duration):
 		super().__init__("control_wait", DURATION=ensure_expression(duration))
 
+class WaitUntil(core.Statement):
+	def __init__(self, cond):
+		super().__init__("control_wait_until", CONDITION=ensure_expression(cond))
+
 Repeat = core.repeatn
 
 class ForeverHack():
